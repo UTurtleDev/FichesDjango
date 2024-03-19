@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiches Django</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="icon" sizes="192x192" href="./icon.png">
+</head>
+<body>
+    <header>
+        <div class="title-elements">
+            <h1>Fiches Django</h1>
+            <img class="logo" src="./logo-300x60.webp" alt="Logo Docstring">
+        </div>
+    </header>
+    <nav>
+        <a href="index.html">Les bases de Django</a>
+        <a href="modeles.html">Les modèles</a>
+        <a href="vues.html">Les vues</a>
+        <a href="gabarits.html">Les gabarits</a>
+        <a href="administration.html">L'interface d'administration</a>
+        <a href="formulaires.html">Les formulaires</a>
+        <a href="vuesclasses.html">Les vues fondées sur les classes</a>
+        <a href="postgresql.html">Configurer PostgreSQL</a>
+        <a href="utilisateurs.html">La gestion des utilisateurs</a>
+    </nav>
+    <section id="bases-django" class="container">  
+        <h2>Les bases de Django</h2>
+        <ol>
+            <li class="subtitle"><p>Mise en place de l'environnement</p>
+                <ul>
+                    <li>Création du dossier</li>
+                    <li>Création de l'environnement virtuel</li>
+                    <li>Sourcer l'environnement</li>
+                    <li>Installation de Django</li>
+                    <li>Création du requirements.txt</li>
+                </ul>
+            </li>
+            <li class="subtitle">Créer le projet Django
+                <ul>
+                    <li>Création du projet :<br><code>django-admin startproject <projet></projet></code></li>
+                    <li>Renommer le deuxième dossier (sur 3) en "src"</li>
+                    <li>Lancement du serveur de developpement (à partir du dossier src) :<br><code>python manage.py runserver</code></li>
+                </ul>
+            </li>
+            <li class="subtitle">Configuration de Pycharm
+                <ul>
+                    <li>Ouvrir de dossier dans pycharm</li>
+                    <li>masquer le dossier .venv</li>
+                    <li>vérifier l'environnement virtuel</li>
+                    <li>changer le chemin par defaut du terminal en rajoutant /src</li>
+                </ul>
+            </li>
+            <li class="subtitle">Les routes, les vues et templates
+                <ul>
+                    <li>Appliquer les migrations sinon l'interface d'administration n'apparait pas<br><code>python manage.py migrate</code></li>
+                    <li>Dans les settings du projet, rajouter dans urlpatterns le lien de la page d'accueil :<br><code>urlpatterns = [<br>
+                        path('', index, name="index"),<br>
+                        path('admin/', admin.site.urls),<br>
+                        ]</code></li>
+                    <li>Créer le fichier views.py dans le projet</li>
+                    <li>Créer la vue correspondante :<br><code>def index(request):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return render(request, "index.html")</code>
+                    </li>
+                    <li>Créer le dossier templates dans le projet</li>
+                    <li>Créer le fichier index.html</li>
+                    <li>Rajouter le dossier templates dans les settings du projet à TEMPLATES :<br><code>'DIRS': [os.path.join(BASE_DIR, "application</application>/templates")],</code>
+                    </li>
+                    <li>Inserer des données dans un template : 
+                        <ul>
+                            <li>dans la vue : <br> <code>def index(request):<br>&nbsp;&nbsp;&nbsp;&nbsp;return render(request, "index.html", context={"serie": "Flash"})</code></li>
+                            <li>dans le html : <br> <code>&lt;p&gt;{{ serie }}&lt;/p&gt;</code></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="subtitle">Créer un application
+                <ul>
+                    <li>Dans le terminal : <br><code>python manage.py startapp &lt;nom de l'app&gt;</code></li>
+                    <li>Dans les settings du projet, rajouter l'application :<br><code>INSTALLED_APPS = [<br>
+                        'django.contrib.admin',<br>
+                        'django.contrib.auth',<br>
+                        'django.contrib.contenttypes',<br>
+                        'django.contrib.sessions',<br>
+                        'django.contrib.messages',<br>
+                        'django.contrib.staticfiles',<br>
+                        'nom de l'application'<br>
+                        ]</code>
+                    </li>
+                    <li>Créer un fichier urls.py dans l'application</li>
+                    <li>Créer l'urlpartterns :<br><code>     urlpatterns = [
+                        path('', index, name="suivi-index"),
+                        ]</code></li>
+                    <li>Créer la vue dans le fichier views de l'application</li>
+                    <li>Mettre le dossier src en source root pour que Django le reconnaisse comme dossier source</li>
+                </ul>
+            </li>
+            <li class="subtitle">Les fichiers statiques
+                <ul>
+                    <li>Créer un dossier "static/nomApplication" dans l'application</li>
+                    <li>Créer le fichier css</li>
+                    <li>Dans le fichier html, tout en haut rajouter :<br><code>{% load static %}</code></li>
+                    <li>Lier le fichier css :<br><code>&lt;link rel="stylesheet" href="{% static 'css/style.css' %}&gt;</code></li>
+                    <li>Pour les static du projet, il faut rajouter dans le setting du projet sous STATIC_URL = '/static/' :<br><code>    STATICFILES_DIRS = [
+                        os.path.join(BASE_DIR, "nomProjet/static/css/")
+                    ]</code></li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+
+<script src="assets/js/script.js"></script>
+    
+</body>
+</html>

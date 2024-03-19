@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiches Django</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="icon" sizes="192x192" href="./icon.png">
+</head>
+<body>
+    <header>
+        <div class="title-elements">
+            <h1>Fiches Django</h1>
+            <img class="logo" src="./logo-300x60.webp" alt="Logo Docstring">
+        </div>
+    </header>
+    <nav>
+        <a href="index.html">Les bases de Django</a>
+        <a href="modeles.html">Les modèles</a>
+        <a href="vues.html">Les vues</a>
+        <a href="gabarits.html">Les gabarits</a>
+        <a href="administration.html">L'interface d'administration</a>
+        <a href="formulaires.html">Les formulaires</a>
+        <a href="vuesclasses.html">Les vues fondées sur les classes</a>
+        <a href="postgresql.html">Configurer PostgreSQL</a>
+        <a href="utilisateurs.html">La gestion des utilisateurs</a>
+    </nav>
+    <section id="bases-django" class="container">  
+        <h2>Les Modèles</h2>
+        <ol>
+            <li class="subtitle"><p>Création du modèle</p>
+                <ul>
+                    <li>Créer une classe dans modeles.py :<br><code>class Serie(models.Model):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;name = models.CharField(max_length=200)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;slug = models.SlugField()<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;seen_seasons = models.IntegerField(default=0)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;number_of_seasons = models.IntegerField(default=0)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;description = models.TextField(blank=True)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;cover = models.ImageField(upload_to=None, blank=True)</code>
+                    </li>
+                </ul>
+            </li>
+            <li class="subtitle">Créer les migrations</li>
+                <ul>
+                    <li>Créer le fichier de migration :<br>
+                        <code>python manage.py makemigrations &lt;nomApplication&gt;</code><br>
+                    </li>
+                </ul>
+        </ol>
+    </section>
+
+    <script src="assets/js/script.js"></script>
+    
+</body>
+</html>
